@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The Battle</title>
+	<!-- Link to the CSS file -->
+	<link rel="stylesheet" type="text/css" href="css/battlecss.css">
+	<link href='https://fonts.googleapis.com/css?family=Butcherman' rel='stylesheet'>
+</head>
+
+<body>
+	<h1>Let's Fight</h1>
+	<!-- All the information for the player -->
+	<div class="group">
+		<div style="float:left; width: 300px">
+				<p id="pName" class="name"></p><br>
+				<p id="pHealth" style="color: green"></p><br>
+				<p id="pWeapon"></p><br>
+				<p id="pArmor"></p><br>
+				<p id="pGold"></p><br>
+				<p id="pPotion"></p><br>
+		
+		</div>
+	<!-- All the information for the enemy -->
+		<div>
+			<p id="eName" class="name"></p><br>
+			<p id="eHealth" style="color: red"></p><br>
+		</div>
+		<!-- the form -->
+		<div class="input">
+			<form>
+				<p id="attackInfo"></p><br>
+				<input class="buttons" id="btnAttack" type="button" onClick="AttackEnemy()" value="Attack">
+				<input class="buttons" id="btnFlee" type="button" onClick="FleeAttempt()" value="Flee">
+			</form>
+		</div>
+		
+		<div class="input">
+			<h2 id="pDeath" class="ending"></h2>
+			<form action="index.html">
+				<input class="buttons" id="btnAgain" type="submit" value="Start Over">
+			</form>
+		</div>
+	</div>
+
+	<!-- Link the JavaScript files-->
+	<script src="javascript/character.js"></script>
+	<script src="javascript/weapon.js"></script>
+	<script src="javascript/battle.js"></script>
+</body>
+</html>
