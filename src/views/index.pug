@@ -9,28 +9,28 @@ block content
   p(style='padding-left: 20px') You are about to embark on a difficult fight.
   p(style='padding-left: 20px') It will be a fight to the death. Your goal is to survive.
 
-  form(action="/confirm" method="POST")
+  form
     //- Name Creation
-    p
+    p.form-group
       label.d-block(for="name") Player Name
-      input(type="text" name="name" id="name" placeholder="Claire")
+      input.form-control(type="text" name="name" id="name" placeholder="Claire")
     //- Class Select
-    p
+    p.form-group
       label.d-block(for="classSelect") Class Selection
-      select#classSelect
+      select.form-control#classSelect
         option(value="mage") Mage - Max HP: 200
         option(value="knight") Knight - Max HP: 250
         option(value="war beast") War Beast - Max HP: 300
     //- Weapon Select
-    p
+    p.form-group
       label.d-block Weapon Selection
-      select#weapon
+      select.form-control#weapon
         option(value="fire") Fire
         option(value="ice") Ice
         option(value="lightning") Lightning
     //- Armor Rating
-    p
+    p.form-group
       label.d-block(for="armor") Armor Rating
-      input(type="number" name="armor" id="armor" placeholder="123" min="0")
+      input.form-control(type="number" name="armor" id="armor" placeholder="123" min="0")
     //- Submit Button
-    input(type="submit" value="Start the Game")
+    input.btn.btn-primary(type="submit" value="Start the Game")

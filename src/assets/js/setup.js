@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+window.addEventListener('load', (e) => {
   const classSelect = document.querySelector('#classSelect');
   const weapon = document.querySelector('#weapon');
   // Changing the weapon input based on the class selection
@@ -38,7 +38,16 @@ window.addEventListener('load', () => {
   document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     const error = !!(validateInput('nameError', 'name') || validateInput('armorError', 'armor'));
-    if (!error) document.querySelector('form').submit();
+    if (!error) {
+      const playerData = {
+        name: document.querySelector('#name').value,
+        class: document.querySelector('#classSelect').value,
+        weapon: document.querySelector('#weapon').value,
+        armor: document.querySelector('#armor').value
+      };
+      localStorage.setItem('playerData', JSON.stringify(playerData));
+      document.location.replace('/battle');
+    }
   });
 });
 // Validate form inputs
