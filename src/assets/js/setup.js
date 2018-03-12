@@ -1,9 +1,7 @@
 window.addEventListener('load', () => {
-  console.log('READY');
-
   const classSelect = document.querySelector('#classSelect');
   const weapon = document.querySelector('#weapon');
-  console.log('weapon', classSelect.value);
+  // Changing the weapon input based on the class selection
   classSelect.addEventListener('change', () => {
     if (classSelect.value === 'mage') {
       weapon.options[0].innerHTML = 'Fire';
@@ -34,4 +32,23 @@ window.addEventListener('load', () => {
       weapon.options[2].value = 'claymore';
     }
   });
+  document.querySelector('#name').addEventListener('blur', () => validateInput('nameError', 'name'));
+  document.querySelector('#armor').addEventListener('blur', () => validateInput('armorError', 'armor'));
+  // form submit
+  document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const error = !!(validateInput('nameError', 'name') || validateInput('armorError', 'armor'));
+    if (!error) document.querySelector('form').submit();
+  });
 });
+// Validate form inputs
+function validateInput(errorElement, inputElement) {
+  const error = document.querySelector(`#${errorElement}`);
+  if (document.querySelector(`#${inputElement}`).value === '') {
+    error ? '' : document.querySelector(`#${inputElement}`).insertAdjacentHTML('afterEnd', `<p class="alert alert-danger" id="${errorElement}">${inputElement} is required</p>`);
+    return true;
+  } else if (document.querySelector(`#${inputElement}`).value !== '') {
+    error ? error.parentNode.removeChild(error) : '';
+    return false;
+  }
+}
