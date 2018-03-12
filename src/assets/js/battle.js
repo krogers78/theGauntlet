@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
   } = playerData;
 
   let player = null;
-
+  // Switch statement to assign the player data to a class object
   switch (className) {
     case 'mage':
       if (weapon === 'fire') {
@@ -37,4 +37,20 @@ window.addEventListener('load', () => {
     default:
       throw new Error('Cannot create player');
   }
+  const initialLoad = (p) => {
+    console.log('Player', p);
+    // Create a variable for the player article tag
+    const playerHTML = document.querySelector('#playerArticle').children;
+    // Populate the name
+    playerHTML[0].innerHTML = `<i class="fas fa-user mx-1"></i>${p.name}`;
+    // Populate the Current HP
+    playerHTML[1].innerHTML = `<i class="fas fa-heart mx-1"></i>${p.currentHP}`;
+    // Populate the Weapon of Choice
+    playerHTML[2].innerHTML = `<i class="fas fa-fire mx-1"></i>${p.weapon.weaponName}`;
+    // Populate the Armor Amount
+    playerHTML[3].innerHTML = `<i class="fas fa-shield-alt mx-1"></i>${p.defense}`;
+    // Populate the Gold Amount
+    playerHTML[4].innerHTML = `<i class="fas fa-money-bill-alt mx-1"></i>${p.gold}`;
+  };
+  initialLoad(player);
 });
