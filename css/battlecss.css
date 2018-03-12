@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	background-color: rgb(60, 60, 60);
+	color: darkgray;
+	background-image: url(../background.png);
+}
+h1 {
+	color: goldenrod;
+	text-align: center;
+	padding-bottom: 20px;
+	font-family: 'Butcherman';
+	font-size: 50px;
+}
+div {
+	background: rgba(50,50,50,0.4);
+}
+.last {
+	clear: both;
+}
+*{padding:0px;margin: 0px;}
+.buttons {
+	color: antiquewhite;
+	width: 100px;
+	height: 25px;
+  	background : #C1272D;
+  	background : rgba(193, 39, 45, 1);
+  	border-style : none;
+  	border-radius : 8px;
+  	-moz-border-radius : 8px;
+  	-webkit-border-radius : 8px;
+}
+.name {
+	font-size: 22px;
+	font-weight: bold;
+	font-style: italic;
+}
+.group {
+	padding: 0px 0px 0px 20px;
+	width: 460px;
+	margin: 0 auto;
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+}
+.input {
+	text-align: center;
+	clear: both;
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+}
+.ending {
+	padding: 30px;
+	text-align: center;
+	font-size: 40px;
+	color: rgb(160, 0, 0);
+	font-family: 'Butcherman';
+}
