@@ -1,4 +1,4 @@
-window.addEventListener('load', (e) => {
+window.addEventListener('load', () => {
   const classSelect = document.querySelector('#classSelect');
   const weapon = document.querySelector('#weapon');
   // Changing the weapon input based on the class selection
@@ -41,7 +41,7 @@ window.addEventListener('load', (e) => {
     if (!error) {
       const playerData = {
         name: document.querySelector('#name').value,
-        class: document.querySelector('#classSelect').value,
+        className: document.querySelector('#classSelect').value,
         weapon: document.querySelector('#weapon').value,
         armor: document.querySelector('#armor').value
       };
