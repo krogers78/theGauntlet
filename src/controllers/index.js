@@ -1,8 +1,8 @@
+// Brett Rogers (Kloe)
 const express = require('express');
+
 const router = express.Router();
 
 module.exports = app => app.use('/', router);
 
-router.get('/', (req, res, next) => {
-  res.send('Hello World');
-})
+router.get('/', (req, res) => res.send('Hello World'));
