@@ -1,0 +1,27 @@
+extends _layout
+
+block js
+  script(src="./js/classes/character.js" defer)
+  script(src="./js/classes/weapon.js" defer)
+  script(src="./js/classes/util.js" defer)
+  script(src="./js/battle.js" defer)
+
+block content
+  h1 Let's Fight
+  //- Article for the player data
+  article#playerArticle
+    p Name
+    p Health
+    p Weapon
+    p Armor
+    p Gold
+    p Potion
+  //- Article for the enemy
+  article#enemyArticle
+    p Enemy name
+    p Enemy health
+  //- Attack and flee inputs
+  div
+    p#atkMessage.alert.alert-danger
+    p#atkBtn.btn.btn-primary.mx-1 Attack
+    p#fleeBtn.btn.btn-primary.mx-1 Flee
