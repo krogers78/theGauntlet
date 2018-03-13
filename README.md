@@ -11,11 +11,7 @@ The gauntlet is a small game that a user has the ability to fight enemies until 
 ### Prerequisites
 
 * [NPM](https://www.npmjs.com/get-npm)
-* [Node](https://nodejs.org/en/) and Nodemon
-
-```
-npm install -g nodemon
-```
+* [Node](https://nodejs.org/en/)
 
 #### Cloning and running the program
 
