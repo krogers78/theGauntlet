@@ -1,4 +1,5 @@
 window.addEventListener('load', () => {
+  localStorage.clear();
   const classSelect = document.querySelector('#classSelect');
   const weapon = document.querySelector('#weapon');
   // Changing the weapon input based on the class selection
