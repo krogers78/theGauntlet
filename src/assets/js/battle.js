@@ -43,6 +43,12 @@ window.addEventListener('load', () => {
     default:
       throw new Error('Cannot create player');
   }
+  // Function to handle a dead player
+  const deadPlayer = (play) => {
+    document.querySelector('#atkMessage').innerHTML = `${play.name} has died`;
+    document.querySelector('#atkBtn').style.display = 'none';
+    document.querySelector('#fleeBtn').style.display = 'none';
+  };
   // Load the page with the initial player data
   const initialLoad = (play, gob, el, gi, ra) => {
     console.log('Player', play);
@@ -87,42 +93,38 @@ window.addEventListener('load', () => {
   };
   // Function to populate the enemy data to be called elsewhere
   const populateEnemyData = (tag, enemy) => {
+    // Populate the enemy name
     tag[0].innerHTML = `<i class="fas fa-user mx-1"></i>${enemy.name}`;
+    // Populate the enemy HP
     tag[1].innerHTML = `<i class="fas fa-heart mx-1"></i>${enemy.currentHP}`;
     localStorage.setItem('currentEnemy', enemy.name);
   };
   // Function to determine which enemy is being fought
   const attackEnemy = (play, gob, el, gi, ra) => {
-    // Grab the curent enemy from localStorage
     const currentEnemy = localStorage.getItem('currentEnemy');
+    // Check the current enemy to determine the attacker
     if (currentEnemy.toLowerCase() === 'goblin') {
-      // Attack function to determine the amount of damage
       attackAmount(play, gob);
-      // Update the enemy info
       populateEnemyData(document.querySelector('#enemyArticle').children, gob);
     } else if (currentEnemy.toLowerCase() === 'elf') {
-      // Attack function to determine the amount of damage
       attackAmount(play, el);
-      // Update the enemy info
       populateEnemyData(document.querySelector('#enemyArticle').children, el);
     } else if (currentEnemy.toLowerCase() === 'giant') {
-      // Attack function to determine the amount of damage
       attackAmount(play, gi);
-      // Update the enemy info
       populateEnemyData(document.querySelector('#enemyArticle').children, gi);
     } else if (currentEnemy.toLowerCase() === 'rat') {
-      // Attack function to determine the amount of damage
       attackAmount(play, ra);
-      // Update the enemy info
       populateEnemyData(document.querySelector('#enemyArticle').children, ra);
     }
-    // Check if the enemy has died and call the enemy decider function
+    // Check if the enemy or player has died and call the enemy decider function
     gob.currentHP <= 0 ? enemyDecider(play, gob, el, gi, ra) : null;
     el.currentHP <= 0 ? enemyDecider(play, gob, el, gi, ra) : null;
     gi.currentHP <= 0 ? enemyDecider(play, gob, el, gi, ra) : null;
     ra.currentHP <= 0 ? enemyDecider(play, gob, el, gi, ra) : null;
+    play.currentHP <= 0 ? deadPlayer(play) : null;
     console.log(currentEnemy);
   };
+  // Function to determine the attack strength
   const attackAmount = (play, enemy) => {
     // Random number and DOM element
     const randNum = Utils.randNum(0, 15);
@@ -141,9 +143,41 @@ window.addEventListener('load', () => {
       enemy.decreaseHP(play.weapon.damage);
     }
   };
+  // Function to determine if the player can flee
+  const fleeAttempt = (play, gob, el, gi, ra) => {
+    const randomNumber = Utils.randNum(0, 3);
+    const domElement = document.querySelector('#atkMessage');
+    // Check if the user can flee from the enemy
+    if (randomNumber === 2) {
+      domElement.innerHTML = 'You managed to escape';
+      enemyDecider(play, gob, el, gi, ra);
+    } else {
+      domElement.innerHTML = 'You couldn\'t get away and took damage!';
+      switch (localStorage.getItem('currentEnemy')) {
+        case gob.name:
+          play.decreaseHP(gob.weapon);
+          break;
+        case el.name:
+          play.decreaseHP(el.weapon);
+          break;
+        case gi.name:
+          play.decreaseHP(gi.weapon);
+          break;
+        case ra.name:
+          play.decreaseHP(ra.weapon);
+          break;
+        default:
+          break;
+      }
+      populatePlayerData(document.querySelector('#playerArticle').children, play);
+      play.currentHP <= 0 ? deadPlayer(play) : null;
+    }
+  };
+  // Run the initial function to populate the page
   initialLoad(player, goblin, elf, giant, rat);
-
   // Button Events
   // Attack
   document.querySelector('#atkBtn').addEventListener('click', () => attackEnemy(player, goblin, elf, giant, rat));
+  // Flee
+  document.querySelector('#fleeBtn').addEventListener('click', () => fleeAttempt(player, goblin, elf, giant, rat));
 });

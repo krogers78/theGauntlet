@@ -59,8 +59,6 @@ class Warrior extends Character {}
 // create enemy class inheritance
 class Enemy extends Character {
   characterInfo() {
-    console.log(`Name: ${this.name} Max HP: ${this.maxHP} Current HP: ${
-      this.currentHP
-    } Damage Output: ${this.weapon}`);
+    console.log(`Name: ${this.name} Max HP: ${this.maxHP} Current HP: ${this.currentHP} Damage Output: ${this.weapon}`);
   }
 }
