@@ -46,13 +46,6 @@ class Character {
       this.currentHP
     } Weapon: ${this.weapon.weaponName} Defense: ${this.defense}`);
   }
-  // characterInfoAlert() {
-  //   alert(`Name: ${this.name} \r\nMax HP: ${this.maxHP} \r\nCurrent HP: ${
-  //     this.currentHP
-  //   } \r\nWeapon: ${this.weapon.weaponName} \r\nArmor Rating: ${
-  //     this.defense
-  //   } \r\nGold Amount: ${this.gold}`);
-  // }
 }
 // create warrior class inheritance
 class Warrior extends Character {}

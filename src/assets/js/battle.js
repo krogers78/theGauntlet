@@ -51,7 +51,6 @@ window.addEventListener('load', () => {
   };
   // Load the page with the initial player data
   const initialLoad = (play, gob, el, gi, ra) => {
-    console.log('Player', play);
     populatePlayerData(document.querySelector('#playerArticle').children, play);
     // Call the function that decides which enemy to display
     enemyDecider(play, gob, el, gi, ra);
@@ -67,7 +66,6 @@ window.addEventListener('load', () => {
     const randomNumber = Utils.randNum(1, 5);
     // Create a variable for the enemy article tag
     const enemyHTML = document.querySelector('#enemyArticle').children;
-    console.log(randomNumber);
     if (randomNumber === 1) {
       populateEnemyData(enemyHTML, goblin);
     } else if (randomNumber === 2) {
@@ -122,11 +120,9 @@ window.addEventListener('load', () => {
     gi.currentHP <= 0 ? enemyDecider(play, gob, el, gi, ra) : null;
     ra.currentHP <= 0 ? enemyDecider(play, gob, el, gi, ra) : null;
     play.currentHP <= 0 ? deadPlayer(play) : null;
-    console.log(currentEnemy);
   };
   // Function to determine the attack strength
   const attackAmount = (play, enemy) => {
-    // Random number and DOM element
     const randNum = Utils.randNum(0, 15);
     const domElement = document.querySelector('#atkMessage');
     // Update player armor and currentHP
